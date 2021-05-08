@@ -36,5 +36,3 @@ watchgod==0.7
 websockets==8.1
 uvloop
 httptools
-sqlalchemy
-psycopg2-binary
