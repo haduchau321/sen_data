@@ -15,6 +15,3 @@ async def send(api_key:str):
         out = author.get_data()
         return out
 
-
-
-#  {"id_sy":"AQE5yR7GMR_37vQ:AQFZ_gcVHE0wO-M","id_post":"22412"}
