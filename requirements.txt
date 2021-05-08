@@ -36,3 +36,4 @@ watchgod==0.7
 websockets==8.1
 uvloop
 httptools
+firebase_admin
