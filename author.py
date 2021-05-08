@@ -39,6 +39,3 @@ def get_data():
         cong  += [out]
     return cong
 
-# send(ip,vitri,data)
-# out = get_data()
-# print(out)
