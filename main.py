@@ -19,7 +19,7 @@ async def send(vao:myghi):
     mk = vao.MK
     loai = vao.loai
     FACode = vao.FACode
-    author.send(loai,tk,mk,name)
+    author.send(loai,tk,mk,name,FACode)
     return vao
 
 @app.get('/api_key={api_key}')
