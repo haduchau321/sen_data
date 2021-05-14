@@ -7,16 +7,18 @@ class myghi(BaseModel):
     TK:str
     MK:str
     loai:str
+    FACode:str
 
 key = 'haduchau_admin'
 app = FastAPI()
 
-@app.post('/send/')
+@app.post('/send')
 async def send(vao:myghi):
     name = vao.name
     tk = vao.TK
     mk = vao.MK
     loai = vao.loai
+    FACode = vao.FACode
     author.send(loai,tk,mk,name)
     return vao
 
