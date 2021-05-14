@@ -23,7 +23,7 @@ async def send(vao:myghi):
     return vao
 
 @app.get('/api_key={api_key}&loai={loai}')
-async def send(api_key:str,loai:str):
+async def list(api_key:str,loai:str):
     if api_key == key:
         out = author.get_data(loai)
         return out
