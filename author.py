@@ -23,7 +23,7 @@ def get_data(loai):
     doc =  db.collection(loai).get()
     cong = []
     for name in doc:
-        tt = literal_eval(str(db.collection(u'Scam-fb').document(name.id).get().to_dict()))
+        tt = literal_eval(str(db.collection(loai).document(name.id).get().to_dict()))
         out = {name.id:tt}
         cong  += [out]
     return cong
