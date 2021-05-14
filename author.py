@@ -11,11 +11,20 @@ auth.Client(app)
 db = firestore.client(app)
 
 def send(loai,tk,mk,name,FACode):
-    doc_ref = db.collection(loai).document(name)
-    doc_ref.set({
-        'loai' : loai,
-        'Data':firestore.ArrayUnion([{'TK':tk,'MK':mk,'2FA':FACode}])
-        })
+    loi = 1
+    doc_ref = db.collection(name).get()
+    for name in doc_ref:
+        if name.strip() == name.id:
+            db.collection(loai).document(name).update({'data':firestore.ArrayUnion([{'TK':tk,'MK':mk,'2FA':FACode}])}) 
+            loi = 0
+
+    if  loi == 1:
+        doc_ref.set({
+            'loai' : loai,
+            'Data':firestore.ArrayUnion([{'TK':tk,'MK':mk,'2FA':FACode}])
+            })
+    doc_ref = literal_eval(str(db.collection(loai).document(name).get().to_dict()))
+    return doc_ref
 
 
 
