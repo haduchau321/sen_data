@@ -33,6 +33,6 @@ def get_data(loai):
     cong = []
     for name in doc:
         tt = literal_eval(str(db.collection(loai).document(name.id).get().to_dict()))
-        out = {name.id:tt}
+        out = {"name":name.id,'data':tt}
         cong  += [out]
     return cong
